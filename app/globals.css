@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html, body {
+  background: #F5F0E1;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Hide scrollbars on horizontal scrollers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Subtle dotted grid used for "map" backdrops */
+.dot-grid {
+  background-image: radial-gradient(rgba(47,68,33,0.18) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+/* Pill focus ring */
+.focus-ring:focus-visible {
+  outline: 2px solid #1A2914;
+  outline-offset: 2px;
+}

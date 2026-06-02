@@ -1,4 +1,5 @@
 import type { Event } from "@/lib/itinerary";
+import { formatTime } from "@/lib/itinerary";
 import {
   PlaneIcon,
   TrainIcon,
@@ -77,7 +78,7 @@ function EventBody({ event }: { event: Event }) {
                 {event.from.code}
               </div>
               <div className="text-[12px] text-ink-500">{event.from.city}</div>
-              <div className="mt-2 text-[15px] font-medium text-moss-900">{event.depart}</div>
+              <div className="mt-2 text-[15px] font-medium text-moss-900">{formatTime(event.depart)}</div>
             </div>
             <div className="flex flex-1 flex-col items-center px-2">
               <div className="text-[11px] font-medium text-ink-500">{event.airline}</div>
@@ -96,7 +97,7 @@ function EventBody({ event }: { event: Event }) {
               </div>
               <div className="text-[12px] text-ink-500">{event.to.city}</div>
               <div className="mt-2 text-[15px] font-medium text-moss-900">
-                {event.arrive}
+                {formatTime(event.arrive)}
                 {event.arriveNextDay && <span className="ml-0.5 text-[10px] text-ink-500">+1</span>}
               </div>
             </div>
@@ -114,12 +115,12 @@ function EventBody({ event }: { event: Event }) {
           <div className="mt-1 flex items-end justify-between gap-3">
             <div>
               <div className="text-xl font-semibold tracking-tight text-moss-900">{event.from.city}</div>
-              <div className="mt-1 text-[15px] font-medium text-moss-900">{event.depart}</div>
+              <div className="mt-1 text-[15px] font-medium text-moss-900">{formatTime(event.depart)}</div>
             </div>
             <div className="px-2 text-ink-300">→</div>
             <div className="text-right">
               <div className="text-xl font-semibold tracking-tight text-moss-900">{event.to.city}</div>
-              <div className="mt-1 text-[15px] font-medium text-moss-900">{event.arrive}</div>
+              <div className="mt-1 text-[15px] font-medium text-moss-900">{formatTime(event.arrive)}</div>
             </div>
           </div>
           {event.notes && <p className="mt-3 text-[12.5px] text-ink-500">{event.notes}</p>}
@@ -132,8 +133,8 @@ function EventBody({ event }: { event: Event }) {
           {event.vendor && (
             <div className="mt-0.5 text-[12.5px] text-ink-500">{event.vendor}</div>
           )}
-          <div className="mt-2 flex flex-wrap items-center gap-2">
-            {event.emergencyPhone && (
+          {event.emergencyPhone && (
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <a
                 href={`tel:${event.emergencyPhone.replace(/[^+0-9]/g, "")}`}
                 className="inline-flex items-center gap-1.5 rounded-full bg-moss-50 px-2.5 py-1 text-[12px] font-medium text-moss-900"
@@ -141,13 +142,8 @@ function EventBody({ event }: { event: Event }) {
                 <PhoneIcon className="h-3.5 w-3.5" />
                 {event.emergencyPhone}
               </a>
-            )}
-            {event.cost && (
-              <span className="rounded-full bg-cream-200 px-2.5 py-1 text-[12px] font-medium text-moss-900">
-                {event.cost}
-              </span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       );
     case "stay":
@@ -174,17 +170,12 @@ function EventBody({ event }: { event: Event }) {
           <div className="mt-2 flex flex-wrap items-center gap-2">
             {event.time && (
               <span className="inline-flex items-center gap-1 rounded-full bg-moss-50 px-2.5 py-1 text-[12px] font-medium text-moss-900">
-                <ClockIcon className="h-3.5 w-3.5" /> {event.time}
+                <ClockIcon className="h-3.5 w-3.5" /> {formatTime(event.time)}
               </span>
             )}
             {event.vendor && (
               <span className="rounded-full bg-cream-200 px-2.5 py-1 text-[12px] font-medium text-moss-900">
                 {event.vendor}
-              </span>
-            )}
-            {event.cost && (
-              <span className="rounded-full bg-lime-200 px-2.5 py-1 text-[12px] font-semibold text-moss-900">
-                {event.cost}
               </span>
             )}
           </div>

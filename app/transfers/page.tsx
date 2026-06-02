@@ -34,13 +34,6 @@ export default function TransfersPage() {
                 </div>
                 <div className="text-[15px] font-semibold tracking-tight text-moss-900">{e.title}</div>
                 {e.vendor && <div className="mt-0.5 text-[12.5px] text-ink-500">{e.vendor}</div>}
-                {e.cost && (
-                  <div className="mt-2">
-                    <span className="rounded-full bg-lime-200 px-2.5 py-1 text-[12px] font-semibold text-moss-900">
-                      {e.cost}
-                    </span>
-                  </div>
-                )}
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 <TravelerBadges ids={e.travelers} />

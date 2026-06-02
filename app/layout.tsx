@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Bon Voyage — Italy & France 2026",
-  description: "The Melhuish family trip — one place for every flight, train, ferry, stay and excursion.",
+  description: "The Berger family trip — one place for every flight, train, ferry, stay and excursion.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

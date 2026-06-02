@@ -3,7 +3,7 @@ import { Frame } from "@/components/Frame";
 import { Header } from "@/components/Header";
 import { TravelerBadges } from "@/components/Chip";
 import { ClockIcon, StarIcon, ChevronRight } from "@/components/Icons";
-import { eventsOfType } from "@/lib/itinerary";
+import { eventsOfType, formatTime } from "@/lib/itinerary";
 
 export default function ExcursionsPage() {
   const excursions = eventsOfType("excursion");
@@ -36,11 +36,10 @@ export default function ExcursionsPage() {
                 <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-ink-500">
                   {e.time && (
                     <span className="inline-flex items-center gap-1">
-                      <ClockIcon className="h-3.5 w-3.5" /> {e.time}
+                      <ClockIcon className="h-3.5 w-3.5" /> {formatTime(e.time)}
                     </span>
                   )}
                   {e.vendor && <span>{e.vendor}</span>}
-                  {e.cost && <span className="font-semibold text-moss-700">{e.cost}</span>}
                 </div>
               </div>
               <div className="flex shrink-0 items-center gap-2">

@@ -133,6 +133,13 @@ export const HomeIcon = (p: P) => (
   </svg>
 );
 
+export const ExternalLinkIcon = (p: P) => (
+  <svg {...baseProps} className={base} {...p}>
+    <path d="M14 4h6v6M20 4l-9 9" />
+    <path d="M18 13v5a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h5" />
+  </svg>
+);
+
 export const TicketIcon = (p: P) => (
   <svg {...baseProps} className={base} {...p}>
     <path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 100-4z" />

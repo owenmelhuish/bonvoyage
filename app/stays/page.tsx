@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Frame } from "@/components/Frame";
 import { Header } from "@/components/Header";
 import { Chip, TravelerBadges } from "@/components/Chip";
-import { MapPinIcon, CalendarIcon, ChevronRight } from "@/components/Icons";
+import { MapPinIcon, CalendarIcon, ChevronRight, ExternalLinkIcon } from "@/components/Icons";
 import { ACCOMMODATIONS, countryFlag } from "@/lib/itinerary";
 
 function fmt(iso: string) {
@@ -63,11 +63,16 @@ export default function StaysPage() {
                 <TravelerBadges ids={a.travelers} />
               </div>
 
-              {a.paymentRemaining && (
-                <div className="mt-3 flex items-center justify-between rounded-2xl bg-lime-200/60 px-3 py-2">
-                  <span className="text-[12px] font-medium text-moss-700">Payment remaining</span>
-                  <span className="text-[13px] font-semibold text-moss-900">{a.paymentRemaining}</span>
-                </div>
+              {a.airbnbUrl && (
+                <a
+                  href={a.airbnbUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 flex items-center justify-center gap-2 rounded-2xl bg-moss-900 px-3 py-2.5 text-[13px] font-semibold text-cream-50 transition active:scale-[0.99]"
+                >
+                  <ExternalLinkIcon className="h-4 w-4" />
+                  View listing
+                </a>
               )}
 
               <Link

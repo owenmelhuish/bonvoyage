@@ -55,7 +55,6 @@ export type TransferEvent = EventBase & {
   title: string;
   vendor?: string;
   emergencyPhone?: string;
-  cost?: string;
 };
 
 export type StayEvent = EventBase & {
@@ -71,7 +70,6 @@ export type ExcursionEvent = EventBase & {
   title: string;
   time?: string;
   vendor?: string;
-  cost?: string;
 };
 
 export type Event =
@@ -101,13 +99,13 @@ export type Accommodation = {
   nights: number;
   image: string;
   travelers: TravelerId[];
-  paymentRemaining?: string;
+  airbnbUrl?: string;
 };
 
 export const TRIP = {
   name: "Italy & France",
   year: 2026,
-  tagline: "The Melhuish Family Voyage",
+  tagline: "The Berger Family Voyage",
   startDate: "2026-06-17",
   endDate: "2026-07-02",
   heroImage:
@@ -127,7 +125,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family"],
-    paymentRemaining: "€90 / €300"
+    airbnbUrl: "https://vrbo.onelink.me/ItNz/sk8w9aqw"
   },
   {
     id: "sorrento",
@@ -141,7 +139,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family"],
-    paymentRemaining: "€70"
+    airbnbUrl: "https://vrbo.onelink.me/ItNz/xpg9zxn8"
   },
   {
     id: "florence",
@@ -155,7 +153,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family", "oliver"],
-    paymentRemaining: "€95"
+    airbnbUrl: "https://www.airbnb.com/l/3AtaO3Kp"
   },
   {
     id: "paris",
@@ -169,7 +167,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family", "oliver"],
-    paymentRemaining: "€150"
+    airbnbUrl: "https://www.airbnb.com/rooms/19264313?unique_share_id=63c0b404-40b5-4190-b3b3-ab168a5fadd7&viralityEntryPoint=1&s=76"
   }
 ];
 
@@ -330,7 +328,6 @@ export const DAYS: Day[] = [
         id: "pizza-night",
         title: "Explore town & Pizza making night",
         vendor: "Feeling Italy",
-        cost: "€440",
         travelers: ["family"]
       })
     ]
@@ -345,7 +342,6 @@ export const DAYS: Day[] = [
         id: "capri-boat",
         title: "All-day boat trip to Capri",
         vendor: "Feeling Italy",
-        cost: "€950",
         travelers: ["family"]
       })
     ]
@@ -420,14 +416,12 @@ export const DAYS: Day[] = [
         title: "Tuscan & Beyond pickup — Florence train station",
         vendor: "Tuscan & Beyond",
         emergencyPhone: "+39 340 859 1573",
-        cost: "Booked",
         travelers: ["family"]
       }),
       tr({
         id: "tuscan-flo-oli",
         title: "Tuscan & Beyond pickup — Florence airport",
         vendor: "Tuscan & Beyond",
-        cost: "€145",
         travelers: ["oliver"]
       }),
       s({
@@ -450,7 +444,6 @@ export const DAYS: Day[] = [
         id: "pasta-class",
         title: "Pasta cooking class",
         time: "18:30",
-        cost: "€630",
         travelers: ["family", "oliver"]
       })
     ]
@@ -480,7 +473,6 @@ export const DAYS: Day[] = [
         id: "tuscan-flo-out",
         title: "Tuscan & Beyond sprinter van — to FLR airport",
         vendor: "Tuscan & Beyond",
-        cost: "Booked",
         travelers: ["family", "oliver"]
       }),
       f({
@@ -497,7 +489,6 @@ export const DAYS: Day[] = [
         id: "viator-paris-in",
         title: "Viator transfer — ORY to Montmartre",
         vendor: "Viator (RT airport transfer)",
-        cost: "€349 (round trip)",
         travelers: ["family", "oliver"]
       }),
       s({
@@ -521,7 +512,6 @@ export const DAYS: Day[] = [
         title: "Seine river cruise",
         time: "22:00",
         vendor: "Viator (booked)",
-        cost: "€312",
         travelers: ["family", "oliver"]
       })
     ]
@@ -536,7 +526,6 @@ export const DAYS: Day[] = [
         id: "laperouse",
         title: "Dinner at Laperouse",
         time: "20:00",
-        cost: "€315",
         travelers: ["family", "oliver"]
       })
     ]
@@ -551,7 +540,6 @@ export const DAYS: Day[] = [
         id: "eiffel",
         title: "Eiffel Tower",
         time: "16:00",
-        cost: "€365.26",
         travelers: ["family", "oliver"]
       })
     ]
@@ -565,7 +553,6 @@ export const DAYS: Day[] = [
       ex({
         id: "food-tour",
         title: "Paris food tour",
-        cost: "€697",
         travelers: ["family", "oliver"]
       })
     ]
@@ -630,6 +617,17 @@ export function eventsOfType<T extends Event["type"]>(
     }
   }
   return out;
+}
+
+// Converts a 24-hour "HH:mm" string to a 12-hour clock with am/pm.
+export function formatTime(hhmm: string): string {
+  const [hStr, mStr] = hhmm.split(":");
+  let h = parseInt(hStr, 10);
+  const m = mStr ?? "00";
+  const period = h >= 12 ? "pm" : "am";
+  h = h % 12;
+  if (h === 0) h = 12;
+  return `${h}:${m} ${period}`;
 }
 
 export function dayByDate(date: string): Day | undefined {

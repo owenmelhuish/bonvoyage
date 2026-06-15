@@ -139,7 +139,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family"],
-    airbnbUrl: "https://www.airbnb.com/rooms/19264313?unique_share_id=63c0b404-40b5-4190-b3b3-ab168a5fadd7&viralityEntryPoint=1&s=76"
+    airbnbUrl: "https://www.airbnb.ca/rooms/19264313?unique_share_id=3a7c574e-4b72-4ef2-8a08-45a6370fae85&viralityEntryPoint=1&s=76&locale=en&_set_bev_on_new_domain=1781488259_EANTAzZDVkYTc4YT&set_everest_cookie_on_new_domain=1781488259.EANjk1OWRkOWZkYTE5NW.CFOobjqEfj4II_tEVc4_e_5L3q7gUKpOZCwSHLKh6V4&source_impression_id=p3_1781488260_P3oLPWFi08ZHUJev"
   },
   {
     id: "florence",
@@ -153,7 +153,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family", "oliver"],
-    airbnbUrl: "https://www.airbnb.com/l/3AtaO3Kp"
+    airbnbUrl: "https://www.airbnb.com/rooms/1573936025478234383?unique_share_id=935a2712-fb9d-4644-a6ef-58021bdf28d9&viralityEntryPoint=1&s=76"
   },
   {
     id: "paris",
@@ -167,7 +167,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family", "oliver"],
-    airbnbUrl: "https://vrbo.onelink.me/ItNz/xpg9zxn8"
+    airbnbUrl: "https://vrbo.onelink.me/ItNz/z9fo5s2v"
   }
 ];
 

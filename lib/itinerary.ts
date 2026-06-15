@@ -139,7 +139,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family"],
-    airbnbUrl: "https://vrbo.onelink.me/ItNz/xpg9zxn8"
+    airbnbUrl: "https://www.airbnb.com/rooms/19264313?unique_share_id=63c0b404-40b5-4190-b3b3-ab168a5fadd7&viralityEntryPoint=1&s=76"
   },
   {
     id: "florence",
@@ -167,7 +167,7 @@ export const ACCOMMODATIONS: Accommodation[] = [
     image:
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
     travelers: ["family", "oliver"],
-    airbnbUrl: "https://www.airbnb.com/rooms/19264313?unique_share_id=63c0b404-40b5-4190-b3b3-ab168a5fadd7&viralityEntryPoint=1&s=76"
+    airbnbUrl: "https://vrbo.onelink.me/ItNz/xpg9zxn8"
   }
 ];
 
